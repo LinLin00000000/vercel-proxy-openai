@@ -1,4 +1,4 @@
-# 使用 Vercel 反代 openai
+# 使用 Vercel 反代 openai （图文教程）
 
 国内只是墙了 vercel 本身的域名，但是自定义域名没有墙，因此做了代理并绑定域名之后就可以用自己的域名在国内直连 openai api 了。
 
@@ -17,45 +17,15 @@
 
 ## 要求
 
-- npm
-- 一个域名（无需备案），没有的话可以在阿里云上买一个几块钱一年的
+一个域名（无需备案），没有的话可以在阿里云上买一个几块钱一年的
 
 ## 部署
 
-1. 使用 npm 安装 vercel
+1. 点击一键部署按钮
 
-    ```shell
-   npm i -g vercel
-   ```
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLinLin00000000%2Fvercel-proxy-openai&project-name=vercel-proxy-openai&repository-name=vercel-proxy-openai&root-directory=vercel)
 
-2. 登录 vercel，可以直接用 Github 登录
-
-    ```shell
-   vercel login
-   ```
-
-3. 登录成功后，新建一个文件夹，比如叫 "vercel-proxy"，在其中新建一个json文件，内容如下
-
-    ```json
-    {
-       "rewrites": [
-           {
-               "source": "/:match*",
-               "destination": "https://api.openai.com/:match*"
-           }
-       ]
-    }
-    ```
-
-4. 在这个json文件所在目录打开终端，执行以下命令
-
-    ```shell
-    vercel --prod
-    ```
-
-5. 一阵控制台输出之后会有一个 "🔍  Inspect: <https://vercel.com/your-vercel-username/folderneme/xxxxxxxxxxxxx> [1s]"
-
-   点击这个链接进入到 vercel 的仪表盘，进入到你的项目里，依次点击 Settings -> Domains，然后添加你的域名。
+2. 部署成功之后进入到 vercel 的仪表盘，进入到你的项目里，依次点击 Settings -> Domains，然后添加你的域名。
    ![vercel dashboard](./doc/1.jpg)
 
    按照 vercel 的指引在域名解析添加记录，然后就可以愉快地使用 openai api 啦~
