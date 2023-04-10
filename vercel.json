@@ -1,5 +1,5 @@
 {
-    "buildCommand": null,
+    "buildCommand": "",
     "rewrites": [
         {
             "source": "/:match*",
