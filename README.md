@@ -15,6 +15,11 @@
     const url = `https://${host}/v1/chat/completions`
     ```
 
+- 可参考 [OPENAI API 官方文档](https://platform.openai.com/docs/api-reference/chat)
+ 
+  [官方文档中文翻译](https://linlin00.feishu.cn/docx/Fupxd8fIioGToIxv6Tacz4XbnBf)（部分过时，仅供参考）
+
+
 - 在其他 chatgpt 项目中，可以将变量 "OPENAI_API_BASE_URL" 设置为你的域名
 
 ## 要求
