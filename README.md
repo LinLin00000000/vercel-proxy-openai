@@ -16,15 +16,16 @@
     ```
 
 - 可参考 [OPENAI API 官方文档](https://platform.openai.com/docs/api-reference/chat)
- 
-  [官方文档中文翻译](https://linlin00.feishu.cn/docx/Fupxd8fIioGToIxv6Tacz4XbnBf)（部分过时，仅供参考）
 
+  [官方文档中文翻译](https://linlin00.feishu.cn/docx/Fupxd8fIioGToIxv6Tacz4XbnBf)（部分过时，仅供参考）
 
 - 在其他 chatgpt 项目中，可以将变量 "OPENAI_API_BASE_URL" 设置为你的域名
 
 ## 要求
 
-一个域名（无需备案），没有的话可以在阿里云上买一个几块钱一年的
+- Openai API KEY, 形如 "sk-xxxxxxxx" 的字符串
+
+- 一个域名（无需备案），没有的话可以在阿里云上买一个几块钱一年的
 ![阿里云域名注册](doc/2023-04-11-20-19-54.png)
 
 ## 部署
