@@ -37,125 +37,151 @@
 
 ## 示例
 
-- Postman
-   ![Example of Postman, Header](doc/2023-06-10-11-10-29.png)
-   ![Example of Postman, Body](doc/2023-06-10-11-12-09.png)
+<details><summary>Postman</summary>
+<p>
+
+![Example of Postman, Header](doc/2023-06-10-11-10-29.png)
+![Example of Postman, Body](doc/2023-06-10-11-12-09.png)
+
+</p>
+</details>
 
 以下代码均由 Postman 生成
 
-- cURL
+<details><summary>cURL</summary>
+<p>
 
-  ```bash
-  curl --location 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions' \
+```bash
+curl --location 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions' \
 
-  --header 'Authorization: Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）' \
-  --header 'Content-Type: application/json' \
-  --data '{
-      "model": "gpt-3.5-turbo",
-      "messages": [
-          {
-              "role": "user",
-              "content": "你好"
-          }
-      ]
-  }
-  '
-
-  ```
-
-- Python - Requests
-
-  ```python
-  import requests
-  import json
-
-  url = "https://YOUR DOMAIN（改成你的域名）/v1/chat/completions"
-
-  payload = json.dumps({
+--header 'Authorization: Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）' \
+--header 'Content-Type: application/json' \
+--data '{
     "model": "gpt-3.5-turbo",
     "messages": [
-      {
-        "role": "user",
-        "content": "你好"
-      }
+        {
+            "role": "user",
+            "content": "你好"
+        }
     ]
-  })
-  headers = {
-    'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）',
+}
+'
+
+```
+
+</p>
+</details>
+
+<details><summary>Python - Requests</summary>
+<p>
+
+```python
+import requests
+import json
+
+url = "https://YOUR DOMAIN（改成你的域名）/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好"
+    }
+  ]
+})
+headers = {
+  'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+</p>
+</details>
+
+<details><summary>NodeJs - Axios</summary>
+<p>
+
+```javascript
+const axios = require('axios');
+let data = JSON.stringify({
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好"
+    }
+  ]
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions',
+  headers: { 
+    'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）', 
     'Content-Type': 'application/json'
-  }
+  },
+  data : data
+};
 
-  response = requests.request("POST", url, headers=headers, data=payload)
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+```
 
-  print(response.text)
-  ```
+</p>
+</details>
 
-- NodeJs - Axios
+<details><summary>JavaScript - Fetch</summary>
+<p>
 
-  ```javascript
-  const axios = require('axios');
-  let data = JSON.stringify({
-    "model": "gpt-3.5-turbo",
-    "messages": [
-      {
-        "role": "user",
-        "content": "你好"
-      }
-    ]
-  });
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）");
+myHeaders.append("Content-Type", "application/json");
 
-  let config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions',
-    headers: { 
-      'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）', 
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
+var raw = JSON.stringify({
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "user",
+      "content": "你好"
+    }
+  ]
+});
 
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-  ```
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
 
-- JavaScript - Fetch
+fetch("https://YOUR DOMAIN（改成你的域名）/v1/chat/completions", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+ ```
 
-  ```javascript
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）");
-  myHeaders.append("Content-Type", "application/json");
+</p>
+</details>
 
-  var raw = JSON.stringify({
-    "model": "gpt-3.5-turbo",
-    "messages": [
-      {
-        "role": "user",
-        "content": "你好"
-      }
-    ]
-  });
+<details><summary>飞书机器人</summary>
+<p>
 
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  };
+![Example of Feishu robot](doc/2023-06-10-11-44-29.png)
 
-  fetch("https://YOUR DOMAIN（改成你的域名）/v1/chat/completions", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-   ```
-
-- 飞书机器人
-  ![Example of Feishu robot](doc/2023-06-10-11-44-29.png)
+</p>
+</details>
 
 ## 部署
 
