@@ -28,6 +28,128 @@
 - 一个域名（无需备案），没有的话可以在阿里云上买一个几块钱一年的
 ![阿里云域名注册](doc/2023-04-11-20-19-54.png)
 
+## 示例
+
+- Postman
+   ![Example of Postman, Header](doc/2023-06-10-11-10-29.png)
+   ![Example of Postman, Body](doc/2023-06-10-11-12-09.png)
+
+以下代码均由 Postman 生成
+
+- cURL
+
+  ```bash
+  curl --location 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions' \
+
+  --header 'Authorization: Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）' \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "model": "gpt-3.5-turbo",
+      "messages": [
+          {
+              "role": "user",
+              "content": "你好"
+          }
+      ]
+  }
+  '
+
+  ```
+
+- Python - Requests
+
+  ```python
+  import requests
+  import json
+
+  url = "https://YOUR DOMAIN（改成你的域名）/v1/chat/completions"
+
+  payload = json.dumps({
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "你好"
+      }
+    ]
+  })
+  headers = {
+    'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）',
+    'Content-Type': 'application/json'
+  }
+
+  response = requests.request("POST", url, headers=headers, data=payload)
+
+  print(response.text)
+  ```
+
+- NodeJs - Axios
+
+  ```javascript
+  const axios = require('axios');
+  let data = JSON.stringify({
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "你好"
+      }
+    ]
+  });
+
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: 'https://YOUR DOMAIN（改成你的域名）/v1/chat/completions',
+    headers: { 
+      'Authorization': 'Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）', 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios.request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  ```
+
+- JavaScript - Fetch
+
+  ```javascript
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer sk-xxxxxxxxxxxxx（改成你的APIKEY）");
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "你好"
+      }
+    ]
+  });
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  fetch("https://YOUR DOMAIN（改成你的域名）/v1/chat/completions", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+   ```
+
+- 飞书机器人
+  ![Example of Feishu robot](doc/2023-06-10-11-44-29.png)
+
 ## 部署
 
 1. 点击一键部署按钮
